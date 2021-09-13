@@ -5,48 +5,44 @@ doc.onload = addEventListener('click',(e) => e.preventDefault())
 $('.enter').click(function(){
     let userlogin = $('.user').val()
     let passlogin = $('.pass').val()
-    let field = doc.querySelector('.invalid-fields')
-    let data    = doc.querySelector('.invalid-data')
-    let server  = doc.querySelector('.invalid-server')
+
+    let error     = doc.querySelector('#error')
+    let field     = doc.querySelector('.invalid-fields')
+    let data      = doc.querySelector('.invalid-data')
+    let server    = doc.querySelector('.invalid-server')
 
     let url = 'https://app-workers-auth.herokuapp.com/login'
 
     let account = { userlogin, passlogin }
-
+    
     let config = {
-        method:'POST',
-        body :JSON.stringify(account),
-        headers :{
-            'Content-Type': 'application/json'
-        }
+            method : 'POST',
+            body :JSON.stringify(data),
+            headers :{
+                'Content-Type': 'application/json'
+            }
     }
 
-    if(user == '' || pass == ''){
-        field.style.display = 'block'
-    }else{
-        fetch(url,config)
-                .then(auth => auth.json())
-                .catch(_=>{
-                    server.style.display  = 'block'
-                })
-    }
+   /* fetch(url,config)
+                .then(response => console.log(response.json()))
+                .catch(err => server.show)*/
 
 })
 
 
 function hidden_alert(){
-    let user  = $('.user')
-    let pass  = $('.pass')
+    let userlogin  = $('.user')
+    let passlogin  = $('.pass')
     let field   = doc.querySelector('.invalid-fields')
     let data    = doc.querySelector('.invalid-data')
     let server  = doc.querySelector('.invalid-server')
 
-    user.mouseenter(function(){
+    userlogin.mouseenter(function(){
         field.style.display   = 'none'
         data.style.display    = 'none'
         server.style.display  = 'none'
     })
-    pass.mouseenter(function(){
+    passlogin.mouseenter(function(){
         field.style.display   = 'none'
         data.style.display    = 'none'
         server.style.display  = 'none'
@@ -56,11 +52,11 @@ hidden_alert()
 
 
 function clear(){
-    let user  = doc.querySelector('.user')
-    let pass  = doc.querySelector('.pass')
+    let userlogin  = doc.querySelector('.user')
+    let passlogin  = doc.querySelector('.pass')
 
-    user.value = ''
-    pass.value = ''
+    userlogin.value = ''
+    passlogin.value = ''
 }
 
 
