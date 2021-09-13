@@ -11,11 +11,11 @@ $('.enter').click(function(){
 
     let url = 'https://app-workers-auth.herokuapp.com/login'
 
-    let data = { userlogin, passlogin }
+    let account = { userlogin, passlogin }
 
     let config = {
         method:'POST',
-        body :JSON.stringify(data),
+        body :JSON.stringify(account),
         headers :{
             'Content-Type': 'application/json'
         }
@@ -68,3 +68,12 @@ function storage(USER,PASSWORD){
     localStorage.setItem('_USER',USER)
     localStorage.setItem('_PASSWORD',PASSWORD)    
 }
+
+/**
+ * 
+ * {
+    "userlogin":"admin@aws.com",
+    "passlogin":"81dc9bdb52d04dc20036dbd8313ed055"
+}
+ * 
+ */
