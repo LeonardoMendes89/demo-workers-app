@@ -3,16 +3,22 @@ doc.onload = addEventListener('click',(e) => e.preventDefault())
 
 
 $('.enter').click(function(){
-    let user = $('.user').val()
-    let pass = $('.pass').val()
+    let userlogin = $('.user').val()
+    let passlogin = $('.pass').val()
     let field = doc.querySelector('.invalid-fields')
     let data    = doc.querySelector('.invalid-data')
     let server  = doc.querySelector('.invalid-server')
 
-    let url = 'http://localhost:3004/auth'
+    let url = 'https://app-workers-auth.herokuapp.com/login'
+
+    let data = { userlogin, passlogin }
 
     let config = {
-        method:'GET'
+        method:'POST',
+        body :JSON.stringify(data),
+        headers :{
+            'Content-Type': 'application/json'
+        }
     }
 
     if(user == '' || pass == ''){
@@ -20,22 +26,6 @@ $('.enter').click(function(){
     }else{
         fetch(url,config)
                 .then(auth => auth.json())
-                .then(auth => {
-                    auth.map(e =>{
-                        if( user == e.user
-                            &&
-                            pass == e.password){
-                            doc.location.href = 'home/index.html'
-                            storage(user,pass)
-                            clear()
-                        }else if(user != e.user
-                            &&
-                            pass != e.password){
-                            data.style.display = 'block' 
-                            clear() 
-                        }
-                    })
-                })
                 .catch(_=>{
                     server.style.display  = 'block'
                 })
