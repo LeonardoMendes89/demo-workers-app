@@ -6,7 +6,6 @@ $('.enter').click(function(){
     let userlogin = $('.user').val()
     let passlogin = $('.pass').val()
 
-    let error     = doc.querySelector('#error')
     let field     = doc.querySelector('.invalid-fields')
     let data      = doc.querySelector('.invalid-data')
     let server    = doc.querySelector('.invalid-server')
