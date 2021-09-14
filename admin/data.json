@@ -1,27 +1,27 @@
 [
     {
-        "category":"build defense"
+        "category":"LOGISTICS"
     },{
-        "category":"information systems"
+        "category":"ENGINEERING"
     },{
-        "category":"administration"
+        "category":"MARKETING"
     },{
-        "category":"food"
+        "category":"SCIENCIES"
     },{
-        "category":"clean up"
+        "category":"SECURITY"
     },{
-        "category":"arts"
+        "category":"T.I"
     },{
-        "category":"comunications"
+        "category":"SELL"
     },{
-        "category":"teatch"
+        "category":"BUY"
     },{
-        "category":"sell"
+        "category":"ADMINISTRATION"
     },{
-        "category":"buy"
+        "category":"CLEAN UP"
     },{
-        "category":"chemistry"
+        "category":"RH"
     },{
-        "category":"search"
+        "category":"MARKET"
     }
 ]

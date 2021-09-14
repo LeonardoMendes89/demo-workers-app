@@ -18,8 +18,8 @@ $('#home').click(function(){
 
 
 function load_section_choices(){
-    const url  = 'data.json'
-    let sector = document.getElementById('sector')
+    const url         = 'data.json'
+    let  workersector = document.getElementById('sector')
 
     fetch(url)
             .then(data => data.json())
@@ -46,32 +46,32 @@ function create_data(positioned, el, createdObject,digite){
 
 
 $('#clear').click(function(){
-        let id      = document.querySelector('#id')
-        let name    = document.querySelector('#name')
-        let job     = document.querySelector('#job')
-        let salary  = document.querySelector('#salary')
-        let sector  = document.querySelector('#sector')
+        let id            = document.querySelector('#id')
+        let workername    = document.querySelector('#name')
+        let workerjob     = document.querySelector('#job')
+        let workersalary  = document.querySelector('#salary')
+        let workersector  = document.querySelector('#sector')
     
-        id.value     = ''
-        name.value   = ''
-        job.value    = ''
-        salary.value = ''
-        sector.value = ''
+        id.value           = ''
+        workername.value   = ''
+        workerjob.value    = ''
+        workersalary.value = ''
+        workersector.value = ''
 })
     
 
 function clear(){
-    let id      = document.querySelector('#id')
-    let name    = document.querySelector('#name')
-    let job     = document.querySelector('#job')
-    let salary  = document.querySelector('#salary')
-    let sector  = document.querySelector('#sector')
+    let id            = document.querySelector('#id')
+    let workername    = document.querySelector('#name')
+    let workerjob     = document.querySelector('#job')
+    let workersalary  = document.querySelector('#salary')
+    let workersector  = document.querySelector('#sector')
 
-    id.value     = ''
-    name.value   = ''
-    job.value    = ''
-    salary.value = ''
-    sector.value = ''
+    id.value           = ''
+    workername.value   = ''
+    workerjob.value    = ''
+    workersalary.value = ''
+    workersector.value = ''
 }   
 
 
@@ -94,23 +94,23 @@ $('#nmode').click(function(){
 
 
 $('#send').click(function(){
-    let name    = document.querySelector('#name').value
-    let job     = document.querySelector('#job').value
-    let salary  = document.querySelector('#salary').value
-    let sector  = document.querySelector('#sector').value
+    let workername    = document.querySelector('#name').value
+    let workerjob     = document.querySelector('#job').value
+    let workersalary  = document.querySelector('#salary').value
+    let workersector  = document.querySelector('#sector').value
 
-    if( name    == ''||
-        job     == ''||
-        salary  == ''||
-        sector  == ''  ){
+    if( workername    == ''||
+        workerjob     == ''||
+        workersalary  == ''||
+        workersector  == ''  ){
 
             $('.invalid-fields').show(100)
 
     }else{
 
-        const url  = 'http://localhost:3003/insert'
+        const url  = 'https://app-workers.herokuapp.com/'
         const data = {
-            name, job, salary, sector
+            workername, workerjob, workersalary, workersector
         }
         const config = {
             method: 'POST',
@@ -158,22 +158,22 @@ $('.successdelete-data').click(function(){
 
 
 $('#getId').click(function(){
-    let id      = document.querySelector('#id').value
-    let name    = document.querySelector('#name')
-    let job     = document.querySelector('#job')
-    let salary  = document.querySelector('#salary')
-    let sector  = document.querySelector('#sector')
+    let id            = document.querySelector('#id').value
+    let workername    = document.querySelector('#name')
+    let workerjob     = document.querySelector('#job')
+    let workersalary  = document.querySelector('#salary')
+    let workersector  = document.querySelector('#sector')
 
-    if( name    == ''||
-        job     == ''||
-        salary  == ''||
-        sector  == ''  ){
+    if( workername     == ''||
+        workerjob      == ''||
+        workersalary   == ''||
+        workersector   == ''  ){
 
             $('.invalid-fields').show(100)
 
     }else{
 
-        const url    = `http://localhost:3003/${id}`
+        const url    = `https://app-workers.herokuapp.com/${id}`
         const config = {
             method: 'GET'
         }
@@ -185,15 +185,15 @@ $('#getId').click(function(){
                                if(id){
                                     let digite = 2
                                   
-                                    let nameBk      = e.name
-                                    let jobBk       = e.job
-                                    let salaryBk    = e.salary
-                                    let sectorBk    = e.sector
+                                    let nameBk      = e.workername
+                                    let jobBk       = e.workerjob
+                                    let salaryBk    = e.workersalary
+                                    let sectorBk    = e.workersector
                                 
-                                    create_data(name,nameBk,'ul',digite)
-                                    create_data(job,jobBk,'ul',digite)
-                                    create_data(salary,salaryBk,'ul',digite)
-                                    create_data(sector,sectorBk,'ul',digite)
+                                    create_data(workername,nameBk,'ul',digite)
+                                    create_data(workerjob,jobBk,'ul',digite)
+                                    create_data(workersalary,salaryBk,'ul',digite)
+                                    create_data(workersector,sectorBk,'ul',digite)
                                }
                             })
                         })
@@ -204,24 +204,24 @@ $('#getId').click(function(){
 
 
 $('#update').click(function(){
-    let id      = document.querySelector('#id').value
-    let name    = document.querySelector('#name').value
-    let job     = document.querySelector('#job').value
-    let salary  = document.querySelector('#salary').value
-    let sector  = document.querySelector('#sector').value
+    let id            = document.querySelector('#id').value
+    let workername    = document.querySelector('#name').value
+    let workerjob     = document.querySelector('#job').value
+    let workersalary  = document.querySelector('#salary').value
+    let workersector  = document.querySelector('#sector').value
 
-    if( name    == ''||
-        job     == ''||
-        salary  == ''||
-        sector  == ''  ){
+    if( workername    == ''||
+        workerjob     == ''||
+        workersalary  == ''||
+        workersector  == ''  ){
 
             $('.invalid-fields').show(100)
 
     }else{
 
-        const url  = `http://localhost:3003/update/${id}`
+        const url  = `https://app-workers.herokuapp.com/?id=${id}`
         const data = {
-            name, job, salary, sector
+            workername, workerjob, workersalary, workersector
         }
         const config = {
             method: 'PUT',
