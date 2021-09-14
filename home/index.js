@@ -114,7 +114,7 @@ function search_table(){
             $('.tb_search').show()
             $('.tb').hide()
 
-           const url = `http://localhost:3003/search/name/${search.value}`
+           const url = `https://app-workers.herokuapp.com/${search.value}`
         
            const config = {
                method:'GET'
@@ -124,10 +124,10 @@ function search_table(){
                     .then(search => search.json())
                     .then(search =>{
                         search.filter(e=>{
-                                let name = e.name.substring(0,15) 
-                                let job = e.job.substring(0,15) 
-                                let sector = e.sector.substring(0,15) 
-                                let salary = e.salary + '$' 
+                                let name = e.workername.substring(0,15) 
+                                let job = e.workerjob.substring(0,15) 
+                                let sector = e.workersector.substring(0,15) 
+                                let salary = e.workersalary + '$' 
 
                                 searchPeople(name,job,sector,salary)
                         })
