@@ -243,19 +243,37 @@ $('#update').click(function(){
 
 
 $('#delete').click(function(){
-        let id       = document.querySelector('#id').value
-        const url    = `http://localhost:3003/delete/${id}`
+        let id            = document.querySelector('#id').value
+        let workername    = document.querySelector('#name').value
+        let workerjob     = document.querySelector('#job').value
+        let workersalary  = document.querySelector('#salary').value
+        let workersector  = document.querySelector('#sector').value
+
+    if( workername    == ''||
+        workerjob     == ''||
+        workersalary  == ''||
+        workersector  == ''  ){
+
+            $('.invalid-fields').show(100)
+
+    }else{
+
+        
+        const url    = `https://app-workers.herokuapp.com/?id=${id}`
         const config = {
             method: 'DELETE',
         }
 
         fetch(url, config)
-                        .then(datas => {
+                        .then(data => {
                                 clear()
-                                datas.json()
+                                data.json()
                                 $('.successdelete-data').show(100)
                         })
                         .catch(_ => $('.invalid-server').show(100))
+
+    }
+
 })
 
 
