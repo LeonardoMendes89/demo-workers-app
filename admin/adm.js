@@ -27,7 +27,7 @@ function load_section_choices(){
                 data.map(e=>{
                     let digite = 1
                     let cat = e.category
-                    create_data(sector,cat,'option',digite)
+                    create_data(workersector,cat,'option',digite)
                 })
             })
             .catch()

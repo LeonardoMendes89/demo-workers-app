@@ -46,12 +46,38 @@ $('#enter').click(function(){
 */
 
 
-//função proviósoria
+//função provisória
 $('#enter').click(function(){
-    const url = './db/db.json'
+    userlogin = doc.getElementById('user').value
+    passlogin = doc.getElementById('pass').value
+    
+    let data      = doc.querySelector('.invalid-data')
+    
+    const urlMock = './auth/db/db.json'
 
-    fetch(url)
-            .then(account => console.log(account.json()))
+    fetch(urlMock)
+            .then(account => account.json())
+            .then(account => {
+                account.map(e=>{
+
+                    if(     e.passlogin === passlogin 
+                        && 
+                            e.userlogin === userlogin){
+
+                                storage(userlogin,passlogin)
+                                doc.location.href = 'home/index.html'
+
+                    }else if(e.passlogin != passlogin 
+                        && 
+                            e.userlogin  != userlogin){
+
+                                data.style.display = 'block'
+
+                    }
+                })
+            })
+            .catch()
+
 })
 
 
@@ -91,12 +117,3 @@ function storage(USER,PASSWORD){
 }
 
 
-/**
- * 
- *      {
-            "userlogin":"admin@aws.com",
-            "passlogin":"81dc9bdb52d04dc20036dbd8313ed055"
-        }
- * 
- * 
- */
