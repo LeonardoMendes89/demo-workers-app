@@ -29,13 +29,13 @@ $('#enter').click(function(){
         }
     
              fetch(url,config)
-                    .then(data => {
-                        console.log(data.json())
-                        doc.location.href = "/home"
-                    })
-                    .catch(_ =>{
-                        server.style.display = 'block'
-                    })
+                        .then(_ => {
+                            storage(userlogin,passlogin)
+                            doc.location.href = "/home"
+                        })
+                        .catch(_ =>{
+                            server.style.display = 'block'
+                        })
 
             
 
