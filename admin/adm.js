@@ -277,3 +277,8 @@ function storage(){
     }
 }
 storage()
+
+setInterval(function(){
+    localStorage.removeItem('_USER')
+    localStorage.removeItem('_PASSWORD')    
+},90000);

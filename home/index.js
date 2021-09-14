@@ -161,6 +161,12 @@ function storage(){
 storage()
 
 
+setInterval(function(){
+    localStorage.removeItem('_USER')
+    localStorage.removeItem('_PASSWORD')    
+},90000);
+
+
 function searchPeople(id, name, job, sector, salary){
     const id_area        = doc.getElementById('idsc')
     const name_area      = doc.getElementById('namesc')

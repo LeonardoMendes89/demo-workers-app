@@ -2,9 +2,9 @@ const doc = document
 doc.onload = addEventListener('click',(e) => e.preventDefault())
 
 
-$('.enter').click(function(){
-    let userlogin = $('.user').val()
-    let passlogin = $('.pass').val()
+$('#enter').click(function(){
+    let userlogin = $('#user').val()
+    let passlogin = $('#pass').val()
 
     let field     = doc.querySelector('.invalid-fields')
     let data      = doc.querySelector('.invalid-data')
@@ -16,15 +16,24 @@ $('.enter').click(function(){
     
     let config = {
             method : 'POST',
-            body :JSON.stringify(data),
+            body :JSON.stringify(account),
             headers :{
                 'Content-Type': 'application/json'
-            }
+            },
+            cors:'cors'
     }
 
-   /* fetch(url,config)
-                .then(response => console.log(response.json()))
-                .catch(err => server.show)*/
+    console.log(userlogin + ','+  passlogin)
+    storage(userlogin,passlogin)
+    console.log(account)
+    console.log(config)
+
+    /*fetch(url,config)
+                .then(data => {
+                    storage(account),
+                    console.log(data.json())
+                }).catch(err => console.log(err))*/
+
 
 })
 
@@ -60,15 +69,16 @@ function clear(){
 
 
 function storage(USER,PASSWORD){
-    localStorage.setItem('_USER',USER)
-    localStorage.setItem('_PASSWORD',PASSWORD)    
+    localStorage.setItem('_USER',USER.substring(0,6))
+    localStorage.setItem('_PASSWORD',PASSWORD.substring(0,9))    
 }
+
 
 /**
  * 
- * {
-    "userlogin":"admin@aws.com",
-    "passlogin":"81dc9bdb52d04dc20036dbd8313ed055"
-}
+ *  {
+        "userlogin":"admin@aws.com",
+        "passlogin":"81dc9bdb52d04dc20036dbd8313ed055"
+    }
  * 
  */

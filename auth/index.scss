@@ -100,7 +100,7 @@ body{
             @include f_size(1.5rem);
             color:$lb-color;
           }
-          .user,.pass{
+          #user,#pass{
             border:solid 1px rgba($color: #000000, $alpha: 0.3);
             width:90%;
             padding:$half-rem;
@@ -111,7 +111,7 @@ body{
                   box-shadow: 0px 0px 1px;
               }
           }
-          .enter{
+          #enter{
             background-color:black;
             font-weight:bold;
             padding:$half-rem;
