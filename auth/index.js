@@ -28,20 +28,18 @@ $('#enter').click(function(){
                 }
         }
     
-        fetch(url,config)
+             fetch(url,config)
                     .then(data => {
-                        data.json()
-                    })
-                    .then(data =>{
-                        data
-                        storage(userlogin,passlogin)
-                        doc.location.href = 'https://workers-app.netlify.app/home/'
+                        console.log(data.json())
+                        doc.location.href = "/https://workers-app.netlify.app/home"
                     })
                     .catch(_ =>{
                         server.style.display = 'block'
                     })
 
-    }
+            
+
+        }
 
 })
 
@@ -82,11 +80,3 @@ function storage(USER,PASSWORD){
 }
 
 
-/**
- * 
- *  {
-        "userlogin":"admin@aws.com",
-        "passlogin":"81dc9bdb52d04dc20036dbd8313ed055"
-    }
- * 
- */
