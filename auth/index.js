@@ -81,3 +81,12 @@ function storage(USER,PASSWORD){
 }
 
 
+/**
+ * 
+ *      {
+            "userlogin":"admin@aws.com",
+            "passlogin":"81dc9bdb52d04dc20036dbd8313ed055"
+        }
+ * 
+ * 
+ */
