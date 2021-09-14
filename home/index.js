@@ -168,6 +168,8 @@ setInterval(function(){
 
 
 function searchPeople(id,name, job, sector, salary){
+    let search           = document.getElementById('search')
+
     const id_area        = doc.getElementById('idsc')
     const name_area      = doc.getElementById('namesc')
     const job_area       = doc.getElementById('jobsc')
