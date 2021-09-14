@@ -69,6 +69,7 @@ $('#site').click(function(){
 
 
 function load_table(){
+    const id_area       = doc.getElementById('id')
     const name_area     = doc.getElementById('name')
     const job_area      = doc.getElementById('job')
     const sector_area   = doc.getElementById('sector')
@@ -85,6 +86,9 @@ function load_table(){
                 .then(people => people.json())
                 .then(people => {
                     people.map(e=>{
+                        let id = e.id
+                        create_data(id_area,id,'ul')
+
                         let name = e.workername.substring(0,15)
                         create_data(name_area,name,'ul')
 
@@ -124,12 +128,13 @@ function search_table(){
                     .then(search => search.json())
                     .then(search =>{
                         search.filter(e=>{
+                                let id   = e.id
                                 let name = e.workername.substring(0,15) 
                                 let job = e.workerjob.substring(0,15) 
                                 let sector = e.workersector.substring(0,15) 
                                 let salary = e.workersalary + '$' 
 
-                                searchPeople(name,job,sector,salary)
+                                searchPeople(id,name,job,sector,salary)
                         })
                     })
                     .catch(err => console.log(err))
@@ -162,7 +167,8 @@ setInterval(function(){
 },90000);
 
 
-function searchPeople(name, job, sector, salary){
+function searchPeople(id,name, job, sector, salary){
+    const id_area        = doc.getElementById('idsc')
     const name_area      = doc.getElementById('namesc')
     const job_area       = doc.getElementById('jobsc')
     const sector_area    = doc.getElementById('sectorsc')
@@ -170,6 +176,7 @@ function searchPeople(name, job, sector, salary){
 
     search.onkeyup = function(){
         if(search.value != ''){
+           id_area.innerHTML     = '<ul>' + id     + '</ul>'
            name_area.innerHTML   = '<ul>' + name   + '</ul>'
            job_area.innerHTML    = '<ul>' + job    + '</ul>'
            sector_area.innerHTML = '<ul>' + sector + '</ul>'
