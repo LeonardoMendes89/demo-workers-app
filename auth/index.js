@@ -48,7 +48,7 @@ $('#enter').click(function(){
 
 //função proviósoria
 $('#enter').click(function(){
-    const url = '../db/db.json'
+    const url = './db/db.json'
 
     fetch(url)
             .then(account => console.log(account.json()))
