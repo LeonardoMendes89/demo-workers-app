@@ -25,7 +25,8 @@ $('#enter').click(function(){
                 body :JSON.stringify(account),
                 headers :{
                     'Content-Type':'application/json'
-                }
+                },
+                cors:'cors'
         }
     
              fetch(url,config)
