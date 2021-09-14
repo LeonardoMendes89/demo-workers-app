@@ -114,7 +114,7 @@ function search_table(){
             $('.tb_search').show()
             $('.tb').hide()
 
-           const url = `https://app-workers.herokuapp.com/${search.value}`
+           const url = `https://app-workers.herokuapp.com/search/${search.value}`
         
            const config = {
                method:'GET'
@@ -177,7 +177,6 @@ function searchPeople(name, job, sector, salary){
         }
     }
 }
-
 
 
 
