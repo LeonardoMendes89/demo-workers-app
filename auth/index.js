@@ -1,7 +1,7 @@
 const doc = document
 doc.onload = addEventListener('click',(e) => e.preventDefault())
 
-
+/*
 $('#enter').click(function(){
     userlogin = doc.getElementById('user').value
     passlogin = doc.getElementById('pass').value
@@ -42,6 +42,16 @@ $('#enter').click(function(){
 
         }
 
+})
+*/
+
+
+//função proviósoria
+$('#enter').click(function(){
+    const url = '../db/db.json'
+
+    fetch(url)
+            .then(account => console.log(account.json()))
 })
 
 
