@@ -31,7 +31,7 @@ $('#enter').click(function(){
              fetch(url,config)
                     .then(data => {
                         console.log(data.json())
-                        doc.location.href = "/https://workers-app.netlify.app/home"
+                        doc.location.href = "/home"
                     })
                     .catch(_ =>{
                         server.style.display = 'block'
