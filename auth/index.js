@@ -3,44 +3,52 @@ doc.onload = addEventListener('click',(e) => e.preventDefault())
 
 
 $('#enter').click(function(){
-    let userlogin = $('#user').val()
-    let passlogin = $('#pass').val()
+    userlogin = doc.getElementById('user').value
+    passlogin = doc.getElementById('pass').value
 
     let field     = doc.querySelector('.invalid-fields')
     let data      = doc.querySelector('.invalid-data')
     let server    = doc.querySelector('.invalid-server')
 
-    let url = 'https://app-workers-auth.herokuapp.com/login'
+    if( userlogin === '' || passlogin === ''){
 
-    let account = { userlogin, passlogin }
+        field.style.display = 'block'
+
+    }else{
+
+        let url = 'https://app-workers-auth.herokuapp.com/login'
+
+        let account = { userlogin, passlogin }
+        
+        let config = {
+                method : 'POST',
+                body :JSON.stringify(account),
+                headers :{
+                    'Content-Type':'application/json'
+                }
+        }
     
-    let config = {
-            method : 'POST',
-            body :JSON.stringify(account),
-            headers :{
-                'Content-Type': 'application/json'
-            },
-            cors:'cors'
+        fetch(url,config)
+                    .then(data => {
+                        data.json()
+                    })
+                    .then(data =>{
+                        data
+                        storage(userlogin,passlogin)
+                        doc.location.href = 'https://workers-app.netlify.app/home/'
+                    })
+                    .catch(_ =>{
+                        server.style.display = 'block'
+                    })
+
     }
-
-    console.log(userlogin + ','+  passlogin)
-    storage(userlogin,passlogin)
-    console.log(account)
-    console.log(config)
-
-    /*fetch(url,config)
-                .then(data => {
-                    storage(account),
-                    console.log(data.json())
-                }).catch(err => console.log(err))*/
-
 
 })
 
 
 function hidden_alert(){
-    let userlogin  = $('.user')
-    let passlogin  = $('.pass')
+    let userlogin  = $('#user')
+    let passlogin  = $('#pass')
     let field   = doc.querySelector('.invalid-fields')
     let data    = doc.querySelector('.invalid-data')
     let server  = doc.querySelector('.invalid-server')
@@ -60,8 +68,8 @@ hidden_alert()
 
 
 function clear(){
-    let userlogin  = doc.querySelector('.user')
-    let passlogin  = doc.querySelector('.pass')
+    let userlogin  = doc.querySelector('#user')
+    let passlogin  = doc.querySelector('#pass')
 
     userlogin.value = ''
     passlogin.value = ''
